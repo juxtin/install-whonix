@@ -1,6 +1,6 @@
 # Whonix KVM installer
 
-This is a series of scripts that I used to semi-automate the process of setting up Whonix with KVM on Ubuntu 17.04. From start to finish, it does the following:
+This is a series of scripts that I used to semi-automate the process of following [this document](https://www.whonix.org/wiki/KVM#KVM_Setup_Instructions) to set up Whonix with KVM on Ubuntu 17.04. From start to finish, it does the following:
 
 1. Install KVM and dependencies
 2. Make sure the current user is able to run KVM images without sudo
