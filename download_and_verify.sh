@@ -34,7 +34,7 @@ function fail_signing_key_verification {
 }
 
 function fail_verification {
-    error "Unable to verify $1! Try deleting the '$WORKING_DIR' directory and running '$THIS_COMMAND' again."
+    error "Unable to verify $1! This can happen with interrupted or corrupted downloads.\n Try deleting the '$WORKING_DIR' directory and running '$THIS_COMMAND' again."
 }
 
 # See config.sh for the $WORKING_DIR variable
