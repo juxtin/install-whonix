@@ -41,8 +41,8 @@ function fail_verification {
 mkdir -p $WORKING_DIR
 cd $WORKING_DIR
 
-# delete anything that isn't a compressed VM image
-ls | grep -v "\.xz$" | xargs rm || true # would error if there are no existing files there, hence the 'true'
+# delete any signatures or checksums that may be lying around
+rm *.asc *.sha512sums || true
 
 step "Downloading the two VM images. This might take a while."
 substep "Downloading the Whonix-Gateway VM."
