@@ -42,7 +42,7 @@ mkdir -p $WORKING_DIR
 cd $WORKING_DIR
 
 # delete any signatures or checksums that may be lying around
-rm *.asc *.sha512sums &>/dev/null || true
+silently rm *.asc *.sha512sums || true
 
 step "Downloading the two VM images. This might take a while."
 substep "Downloading the Whonix-Gateway VM."
@@ -62,14 +62,14 @@ get $WORKSTATION_SHA_SIG
 step "Verifying the downloads."
 
 substep "Downloading and verifying the signing key."
-gpg --fingerprint # just in case this has never been run
-chmod --recursive og-rwx ~/.gnupg
+quietly gpg --fingerprint # just in case this has never been run
+quietly chmod --recursive og-rwx ~/.gnupg
 get $SIGNING_KEY_URL -O patrick.asc
-gpg --keyid-format long --with-fingerprint patrick.asc | grep "$SIGNING_ID" || \
+gpg --keyid-format long --with-fingerprint patrick.asc | grep -q "$SIGNING_ID" || \
     fail_signing_key_verification
-gpg --keyid-format long --with-fingerprint patrick.asc | grep "$SIGNING_EMAIL" || \
+gpg --keyid-format long --with-fingerprint patrick.asc | grep -q "$SIGNING_EMAIL" || \
     fail_signing_key_verification
-gpg --keyid-format long --with-fingerprint patrick.asc | grep "$SIGNING_FINGERPRINT" || \
+gpg --keyid-format long --with-fingerprint patrick.asc | grep -q "$SIGNING_FINGERPRINT" || \
     fail_signing_key_verification
 
 substep "Signing key verified. Importing."
@@ -78,10 +78,12 @@ gpg --import patrick.asc
 substep "Verifying Whonix-Gateway."
 gpg --verify-options show-notations --verify Whonix-Gateway-*.libvirt.xz.asc Whonix-Gateway-*.libvirt.xz || \
     fail_verification "Whonix-Gateway"
+substep "Success!"
 
 substep "Verifying Whonix-Workstation."
 gpg --verify-options show-notations --verify Whonix-Workstation-*.libvirt.xz.asc Whonix-Workstation-*.libvirt.xz || \
     fail_verification "Whonix-Workstation"
+substep "Success!"
 
 substep "Files verified successfully."
 

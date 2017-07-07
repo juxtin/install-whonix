@@ -25,3 +25,11 @@ function error_if_root {
         error "Don't run this as root! Run it normally and let it prompt you for sudo access if necessary."
     fi
 }
+
+function quietly {
+    $* >/dev/null
+}
+
+function silently {
+    $* &>/dev/null
+}
