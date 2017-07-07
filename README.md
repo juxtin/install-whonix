@@ -32,7 +32,7 @@ It will skip the image download, but still get the signing key and signature fil
 
 There are two user-configurable settings, managed in `config.sh`:
 
-1. `VERSION`: see https://download.whonix.org/linux/ for possible values.
+1. `VERSION`: see https://download.whonix.org/linux/ for possible values. These scripts should work with Whonix 13 and 14.
 2. `WORKING_DIR`: use whatever you want, but **these scripts will delete things in that directory**, so it's better to leave it as is.
 
 ## warranty
