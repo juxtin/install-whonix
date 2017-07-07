@@ -22,6 +22,12 @@ All you have to do is run the scripts in this order:
 4. `./download_and_verify.sh`
 5. `./setup_kvm.sh`
 
+## using other download sources
+
+By default, the `download_and_verify.sh` script uses the official Whonix https source.
+If you prefer to download the images from another source, just place the `.xz` files (and those files only) in the working directory (`./build` by default), make sure the version number matches what it says in `config.sh`, and run `download_and_verify.sh`.
+It will skip the image download, but still get the signing key and signature files over https and verify the images you downloaded.
+
 ## optional configuration
 
 There are two user-configurable settings, managed in `config.sh`:
