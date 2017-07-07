@@ -42,7 +42,7 @@ mkdir -p $WORKING_DIR
 cd $WORKING_DIR
 
 # delete any signatures or checksums that may be lying around
-silently rm *.asc *.sha512sums || true
+silently rm *.asc *.sha512sums *.xml *.qcow2 || true
 
 step "Downloading the two VM images. This might take a while."
 substep "Downloading the Whonix-Gateway VM."
