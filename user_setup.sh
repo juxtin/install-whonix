@@ -3,7 +3,7 @@
 set -euo pipefail
 source ./common.sh
 
-eror_if_root
+error_if_root
 
 step "Requesting sudo to add $(whoami) to groups 'libvirt' and 'kvm'."
 sudo addgroup "$(whoami)" libvirt
